@@ -44,5 +44,5 @@ return [bbox, text, prob] : a list with results by following structure:<br>
 *prob* : confidence of text (between 0, 1)<br>
 
 
-## TesseractOCR "https://github.com/tesseract-ocr/tesseract"<br>
+## TesseractOCR "https://github.com/tesseract-ocr/tesseract" <br>
 
