@@ -7,7 +7,7 @@ return [bbox, (text, score)] : a Multi-Level list with results by following stru
           (text, score): 這是一個二元組，其中 text 是檢測到的文字，score 是置信度。 <br>
 
 *bbox* : coordinate of text bbox<br>
-     coordinate structure：[ (x1, y1), (x2, y2), (x3, y3), (x4, y4) ] <br>
+     coordinate structure：[ [x1, y1], [x2, y2], [x3, y3], [x4, y4] ] <br>
    
         (x1, y1)         (x2, y2)
           ┌────────────────┐
