@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 from paddleocr import PaddleOCR, draw_ocr
 
 
+
 def show_txtbox(image_path, ocr_reader):
     """
     顯示PaddleOCR所標記的文字區域
@@ -27,14 +28,18 @@ def show_txtbox(image_path, ocr_reader):
     plt.axis('off')
     plt.show()
 
-def txt_extract(image_path, ocr):
+def txt_extract(image_path, reader):
     """
     回傳OCR結果 (文字 + 座標)
-    :param image_path: 圖片的路徑
-    :param ocr: PaddleOCR物件
-    :return: 提取的文字和座標信息的字典列表
+        關閉log輸出：venv/Lib/site-packages/paddleocr/ppocr/utils/loggers/logging.py：
+        def get_logger(name='ppocr', log_file=None, log_level = "0")
+    param
+        image_path: 圖片的路徑
+        ocr: PaddleOCR物件
+    return:
+        提取的文字和座標信息的字典列表
     """
-    results = ocr.ocr(image_path, cls=True)
+    results = reader.ocr(image_path, cls=True)
     extracted_data = []
     for bbox, (text, score) in results[0]:
         extracted_data.append({
@@ -45,9 +50,9 @@ def txt_extract(image_path, ocr):
     return extracted_data
 
 def main():
-    # 初始化讀取器，設置語言為繁體中文
+    # 初始化讀取器，設置語言為中文
     reader = PaddleOCR(use_angle_cls=True, lang='ch')
-    image_path = './product_info/Product_info_008.jpg'
+    image_path = './path_to/image.jpg'
     data = txt_extract(image_path, reader)
     for item in data:
         print(f"Text: {item['text']}, Coordinates: {item['coord']}")
