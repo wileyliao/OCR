@@ -31,8 +31,15 @@ def show_txtbox(image_path, ocr_reader):
 def txt_extract(image_path, reader):
     """
     回傳OCR結果 (文字 + 座標)
-        關閉log輸出：venv/Lib/site-packages/paddleocr/ppocr/utils/loggers/logging.py：
-        def get_logger(name='ppocr', log_file=None, log_level = "0")
+        關閉log輸出：
+            # 創建一個過濾器類，只允許 WARNING 級別及以上的消息
+            class PaddleLogFilter(logging.Filter):
+                def filter(self, record):
+                    return record.levelno >= logging.WARNING
+            # 獲取 PaddleOCR 的 logger
+            paddle_logger = logging.getLogger('paddleocr')
+            # 為 PaddleOCR 的 logger 添加過濾器
+            paddle_logger.addFilter(PaddleLogFilter())
     param
         image_path: 圖片的路徑
         ocr: PaddleOCR物件
