@@ -1,6 +1,6 @@
 import re
 import opencc
-from error_handler import error_handler
+from Error_handler import error_handler
 
 
 class TextProcessor:

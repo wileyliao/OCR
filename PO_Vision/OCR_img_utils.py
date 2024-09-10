@@ -1,7 +1,7 @@
 import cv2
 import base64
 import numpy as np
-from error_handler import error_handler
+from Error_handler import error_handler
 
 
 @error_handler
