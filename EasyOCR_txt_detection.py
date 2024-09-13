@@ -2,6 +2,7 @@ import easyocr
 import cv2
 import pylab as plt
 
+
 def show_txtbox(image_path, reader):
     """
     顯示EasyOCR所標記的文字區域
@@ -21,6 +22,7 @@ def show_txtbox(image_path, reader):
     plt.imshow(image)
     plt.axis('off')
     plt.show()
+
 
 def txt_extract(image_path, reader):
     """
@@ -45,13 +47,17 @@ def txt_extract(image_path, reader):
         })
     return extracted_data
 
+
 def main():
     # 初始化讀取器，設置語言為繁體中文
-    reader = easyocr.Reader(['ch_tra', 'en'])
-    image_path = './product_info/Product_info_008.jpg'
+    reader = easyocr.Reader(['en'])
+    image_path = './HW_NumVision/pytorch_v1/thick_num/thick_03.jpg'
     data = txt_extract(image_path, reader)
     for item in data:
-        print(f"Text: {item['text']}, Coordinates: {item['coord']}")
+        print(f"Text: {item['text']}, Coordinates: {item['coord']}, Conf: {item['conf']}")
+
+    show_txtbox(image_path, reader)
+
 
 if __name__ == "__main__":
     main()

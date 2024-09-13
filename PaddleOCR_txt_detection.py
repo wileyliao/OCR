@@ -3,7 +3,6 @@ import matplotlib.pyplot as plt
 from paddleocr import PaddleOCR, draw_ocr
 
 
-
 def show_txtbox(image_path, ocr_reader):
     """
     顯示PaddleOCR所標記的文字區域
@@ -27,6 +26,7 @@ def show_txtbox(image_path, ocr_reader):
     plt.imshow(image_with_boxes)
     plt.axis('off')
     plt.show()
+
 
 def txt_extract(image_path, reader):
     """
@@ -56,13 +56,17 @@ def txt_extract(image_path, reader):
         })
     return extracted_data
 
+
 def main():
     # 初始化讀取器，設置語言為中文
-    reader = PaddleOCR(use_angle_cls=True, lang='ch')
-    image_path = './path_to/image.jpg'
+    reader = PaddleOCR(use_angle_cls=True, lang='en')
+    image_path = './HW_NumVision/pytorch_v1/thick_num/thick_04.jpg'
     data = txt_extract(image_path, reader)
     for item in data:
-        print(f"Text: {item['text']}, Coordinates: {item['coord']}")
+        print(f"Text: {item['text']}, Coordinates: {item['coord']}, Conf:{item['conf']}")
+
+    show_txtbox(image_path, reader)
+
 
 if __name__ == "__main__":
     main()
