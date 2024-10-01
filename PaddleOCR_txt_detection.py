@@ -59,8 +59,8 @@ def txt_extract(image_path, reader):
 
 def main():
     # 初始化讀取器，設置語言為中文
-    reader = PaddleOCR(use_angle_cls=True, lang='en')
-    image_path = './HW_NumVision/pytorch_v1/thick_num/thick_04.jpg'
+    reader = PaddleOCR(use_angle_cls=True, lang='ch')
+    image_path = 'price.png'
     data = txt_extract(image_path, reader)
     for item in data:
         print(f"Text: {item['text']}, Coordinates: {item['coord']}, Conf:{item['conf']}")
