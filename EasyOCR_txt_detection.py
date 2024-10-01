@@ -51,7 +51,7 @@ def txt_extract(image_path, reader):
 def main():
     # 初始化讀取器，設置語言為繁體中文
     reader = easyocr.Reader(['en'])
-    image_path = './HW_NumVision/pytorch_v1/thick_num/thick_03.jpg'
+    image_path = 'output_image.png'
     data = txt_extract(image_path, reader)
     for item in data:
         print(f"Text: {item['text']}, Coordinates: {item['coord']}, Conf: {item['conf']}")
